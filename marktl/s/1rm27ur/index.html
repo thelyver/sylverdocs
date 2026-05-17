@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+  <title>Google's Full Stack AI Ecosystem 2026 — Future-Proof Your Career</title>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #f8f8f5;
+      --surface: #ffffff;
+      --surface-alt: #f2f2ee;
+      --border: #e6e6e1;
+      --text: #1a1a18;
+      --text-muted: #5c5c58;
+      --text-subtle: #9c9c96;
+      --accent: #1a6ce8;
+      --accent-dark: #1050b0;
+      --accent-light: #e8f0fe;
+      --g-blue: #4285f4;
+      --g-red: #ea4335;
+      --g-yellow: #fbbc04;
+      --g-green: #34a853;
+      --g-pink: #e91e8c;
+      --g-teal: #00bcd4;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+      --font-mono: "SF Mono", "Fira Code", "Cascadia Code", "Consolas", monospace;
+      --r-sm: 6px;
+      --r-md: 12px;
+      --r-lg: 20px;
+      --s-sm: 0 1px 4px rgba(0,0,0,0.07);
+      --s-md: 0 4px 18px rgba(0,0,0,0.09);
+      --s-lg: 0 14px 48px rgba(0,0,0,0.13);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.72;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    h1, h2, h3, h4 {
+      line-height: 1.22;
+      font-weight: 760;
+      letter-spacing: -0.02em;
+    }
+
+    h1 { font-size: clamp(1.85rem, 4.5vw, 2.9rem); }
+    h2 { font-size: clamp(1.25rem, 2.8vw, 1.7rem); }
+    h3 { font-size: 1.1rem; font-weight: 700; }
+
+    p { margin-bottom: 1.2rem; }
+    p:last-child { margin-bottom: 0; }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    [id] { scroll-margin-top: 76px; }
+
+    /* ── Site Header ── */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .site-logo {
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .site-date {
+      font-size: 0.78rem;
+      color: var(--text-subtle);
+    }
+
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(150deg, #07101f 0%, #0c1e3a 45%, #0e2158 100%);
+      color: #fff;
+      padding: 72px 28px 56px;
+      text-align: center;
+    }
+
+    .hero-kicker {
+      display: inline-block;
+      background: rgba(66,133,244,0.22);
+      border: 1px solid rgba(66,133,244,0.45);
+      color: #93bbff;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 100px;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 {
+      color: #fff;
+      max-width: 700px;
+      margin: 0 auto 18px;
+    }
+
+    .hero-excerpt {
+      font-size: 1.08rem;
+      color: rgba(255,255,255,0.72);
+      max-width: 560px;
+      margin: 0 auto 34px;
+      line-height: 1.68;
+    }
+
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px 16px;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .hero-meta-sep { color: rgba(255,255,255,0.2); }
+
+    /* ── Hero Image ── */
+    .hero-image-wrap {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+      margin-top: -28px;
+    }
+
+    .hero-image-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: var(--r-lg);
+      box-shadow: var(--s-lg);
+    }
+
+    .img-caption {
+      text-align: center;
+      font-size: 0.76rem;
+      color: var(--text-subtle);
+      font-style: italic;
+      margin-top: 10px;
+    }
+
+    /* ── Content Layout ── */
+    .content-wrap {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 60px 28px 0;
+      display: grid;
+      grid-template-columns: 196px 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+
+    @media (max-width: 800px) {
+      .content-wrap {
+        grid-template-columns: 1fr;
+        gap: 0;
+        padding-top: 40px;
+      }
+    }
+
+    /* ── TOC ── */
+    .toc {
+      position: sticky;
+      top: 72px;
+    }
+
+    .toc-label {
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-subtle);
+      margin-bottom: 14px;
+    }
+
+    .toc-list {
+      list-style: none;
+      border-left: 2px solid var(--border);
+      padding-left: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .toc-list a {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+      display: block;
+      transition: color 0.15s ease;
+    }
+
+    .toc-list a:hover {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .toc-list .toc-h2 {
+      font-weight: 700;
+      color: var(--text);
+      font-size: 0.8rem;
+    }
+
+    @media (max-width: 800px) {
+      .toc {
+        position: static;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--r-md);
+        padding: 20px;
+        margin-bottom: 40px;
+      }
+    }
+
+    /* ── Article Body ── */
+    .article {
+      min-width: 0;
+      padding-bottom: 80px;
+    }
+
+    .article-section {
+      margin-bottom: 60px;
+    }
+
+    .article-section > h2 {
+      margin-bottom: 20px;
+    }
+
+    /* ── Pull Quote ── */
+    .pull-quote {
+      border-left: 4px solid var(--g-blue);
+      background: var(--accent-light);
+      border-radius: 0 var(--r-md) var(--r-md) 0;
+      padding: 22px 28px;
+      margin: 40px 0;
+    }
+
+    .pull-quote p {
+      font-size: 1.13rem;
+      font-style: italic;
+      color: var(--accent-dark);
+      font-weight: 500;
+      line-height: 1.58;
+    }
+
+    /* ── Overview Cards Grid ── */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(268px, 1fr));
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .p-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      padding: 22px;
+      box-shadow: var(--s-sm);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .p-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--s-md);
+    }
+
+    .p-card[data-p="models"]   { border-top: 3px solid var(--g-blue); }
+    .p-card[data-p="agents"]   { border-top: 3px solid var(--g-red); }
+    .p-card[data-p="coding"]   { border-top: 3px solid var(--g-green); }
+    .p-card[data-p="design"]   { border-top: 3px solid var(--g-yellow); }
+    .p-card[data-p="video"]    { border-top: 3px solid var(--g-pink); }
+    .p-card[data-p="research"] { border-top: 3px solid var(--g-teal); }
+
+    .p-icon { font-size: 1.9rem; display: block; margin-bottom: 10px; }
+
+    .p-badge {
+      display: inline-block;
+      font-size: 0.66rem;
+      font-weight: 800;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: #fff;
+      padding: 3px 9px;
+      border-radius: 100px;
+      margin-bottom: 9px;
+    }
+
+    .p-card[data-p="models"]   .p-badge { background: var(--g-blue); }
+    .p-card[data-p="agents"]   .p-badge { background: var(--g-red); }
+    .p-card[data-p="coding"]   .p-badge { background: var(--g-green); }
+    .p-card[data-p="design"]   .p-badge { background: var(--g-yellow); color: #1a1a18; }
+    .p-card[data-p="video"]    .p-badge { background: var(--g-pink); }
+    .p-card[data-p="research"] .p-badge { background: var(--g-teal); }
+
+    .p-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .p-desc {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      line-height: 1.58;
+    }
+
+    .p-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 14px;
+    }
+
+    .chip {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 3px 10px;
+      border-radius: 100px;
+    }
+
+    /* ── Pillar Detail Blocks ── */
+    .p-detail {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 30px;
+      margin-top: 20px;
+      box-shadow: var(--s-sm);
+    }
+
+    .p-detail-head {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .p-detail-emoji {
+      width: 60px;
+      height: 60px;
+      background: var(--surface-alt);
+      border-radius: var(--r-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.1rem;
+      flex-shrink: 0;
+    }
+
+    .p-detail-meta h3 { font-size: 1.22rem; margin-bottom: 4px; }
+    .p-detail-meta .sub { font-size: 0.83rem; color: var(--text-muted); }
+
+    .tool-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .tool-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      background: var(--surface-alt);
+      border-radius: var(--r-sm);
+      padding: 13px 14px;
+    }
+
+    .tool-name {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text);
+      white-space: nowrap;
+      min-width: 126px;
+      padding-top: 1px;
+    }
+
+    .tool-desc {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* ── Takeaways ── */
+    .takeaways-block {
+      background: linear-gradient(150deg, #07101f 0%, #0c1e3a 55%, #0e2158 100%);
+      border-radius: var(--r-lg);
+      padding: 44px 40px;
+      margin: 60px 0;
+      color: #fff;
+    }
+
+    .takeaways-block h2 { color: #fff; margin-bottom: 6px; }
+
+    .t-sub {
+      font-size: 0.87rem;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 32px;
+    }
+
+    .t-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .t-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .t-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(66,133,244,0.25);
+      border: 1px solid rgba(66,133,244,0.45);
+      color: #93bbff;
+      font-size: 0.72rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .t-text {
+      font-size: 0.91rem;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.65;
+    }
+
+    .t-text strong { color: #fff; }
+
+    /* ── Article Ending ── */
+    .article-ending {
+      border-top: 1px solid var(--border);
+      padding-top: 44px;
+      margin-top: 60px;
+    }
+
+    .article-ending h2 { margin-bottom: 20px; }
+
+    .author-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 26px;
+      margin-top: 36px;
+    }
+
+    .author-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #4285f4, #34a853);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .author-info h4 { font-size: 0.98rem; margin-bottom: 5px; }
+    .author-info p { font-size: 0.83rem; color: var(--text-muted); }
+
+    .tags-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 28px;
+    }
+
+    .tag {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 4px 12px;
+      border-radius: 100px;
+    }
+
+    /* ── Site Footer ── */
+    .site-footer {
+      text-align: center;
+      padding: 44px 24px;
+      border-top: 1px solid var(--border);
+      margin-top: 0;
+      font-size: 0.76rem;
+      color: var(--text-subtle);
+      line-height: 1.9;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .hero { padding: 52px 20px 44px; }
+      .hero-image-wrap { padding: 0 16px; }
+      .pillars-grid { grid-template-columns: 1fr; }
+      .p-detail { padding: 22px 18px; }
+      .takeaways-block { padding: 30px 24px; }
+      .author-card { flex-direction: column; }
+      .content-wrap { padding: 32px 16px 0; }
+      .tool-item { flex-direction: column; gap: 6px; }
+      .tool-name { min-width: unset; }
+    }
+  </style>
+<meta property="og:type" content="article">
+<meta property="og:title" content="google-full-stack-ai-ecosystem">
+<meta property="og:description" content="Take a look at Google’s Full Stack AI Ecosystem for 2026. If you want to futureproof your career, you need to see how these pieces connect. It breaks down into 6 main pillars: 🧠 M">
+<meta property="og:url" content="https://thelyver.github.io/sylverdocs/marktl/s/1rm27ur/">
+<meta property="og:image" content="https://thelyver.github.io/sylverdocs/marktl/s/1rm27ur/assets/google-full-stack-ai-ecosystem.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="google-full-stack-ai-ecosystem">
+<meta name="twitter:description" content="Take a look at Google’s Full Stack AI Ecosystem for 2026. If you want to futureproof your career, you need to see how these pieces connect. It breaks down into 6 main pillars: 🧠 M">
+<meta name="twitter:image" content="https://thelyver.github.io/sylverdocs/marktl/s/1rm27ur/assets/google-full-stack-ai-ecosystem.png">
+<link rel="canonical" href="https://thelyver.github.io/sylverdocs/marktl/s/1rm27ur/">
+</head>
+<body>
+
+  <header class="site-header">
+    <span class="site-logo">AI Insights</span>
+    <span class="site-date">2026 · 05 · 12</span>
+  </header>
+
+  <section class="hero">
+    <span class="hero-kicker">Google AI Ecosystem · 2026</span>
+    <h1>The Full Stack AI Playbook:<br>How Google Is Rebuilding Everything</h1>
+    <p class="hero-excerpt">
+      From foundation models to AI video creators — Google's 2026 AI stack spans 6 distinct pillars. Understanding how they connect could define the trajectory of your career.
+    </p>
+    <div class="hero-meta">
+      <span>강수근 (Kang Sugeun)</span>
+      <span class="hero-meta-sep">·</span>
+      <span>May 12, 2026</span>
+      <span class="hero-meta-sep">·</span>
+      <span>5 min read</span>
+      <span class="hero-meta-sep">·</span>
+      <span>#GoogleAI #AItools</span>
+    </div>
+  </section>
+
+  <div class="hero-image-wrap">
+    <img
+      src="assets/google-full-stack-ai-ecosystem.png"
+      alt="Google Full Stack AI Ecosystem 2026 — a visual overview of all 6 pillars: Models, AI Agents, Coding, Design, Video, and Research"
+      loading="eager"
+      width="1140"
+    />
+    <p class="img-caption">Google's Full Stack AI Ecosystem, 2026 — 6 pillars spanning raw intelligence to finished creative output.</p>
+  </div>
+
+  <div class="content-wrap">
+
+    <!-- TOC -->
+    <aside class="toc" aria-label="Table of contents">
+      <p class="toc-label">In This Article</p>
+      <ul class="toc-list">
+        <li><a href="#overview" class="toc-h2">Overview</a></li>
+        <li><a href="#pillars" class="toc-h2">The 6 Pillars</a></li>
+        <li><a href="#models">🧠 Models</a></li>
+        <li><a href="#agents">⚙️ AI Agents</a></li>
+        <li><a href="#coding">💻 Coding</a></li>
+        <li><a href="#design">🎨 Design</a></li>
+        <li><a href="#video">📹 Video</a></li>
+        <li><a href="#research">🔍 Research</a></li>
+        <li><a href="#takeaways" class="toc-h2">Key Takeaways</a></li>
+        <li><a href="#closing" class="toc-h2">Closing</a></li>
+      </ul>
+    </aside>
+
+    <article class="article">
+
+      <!-- Overview -->
+      <section class="article-section" id="overview">
+        <h2>The Stack That Changes Everything</h2>
+        <p>
+          Google has been quietly assembling something remarkable. Not just a collection of AI tools — a vertically integrated ecosystem that spans from raw intelligence all the way to finished creative output.
+        </p>
+        <p>
+          For developers, designers, researchers, and knowledge workers, this is the map you need. Not because Google AI is a monolith, but because each layer of this stack solves a fundamentally different kind of problem — and together, they represent a new way of working.
+        </p>
+
+        <blockquote class="pull-quote">
+          <p>"If you want to future-proof your career, you need to see how these pieces connect."</p>
+        </blockquote>
+
+        <p>
+          The ecosystem breaks down into <strong>6 main pillars</strong>: Models (the intelligence layer), AI Agents (the autonomous workers), Coding (the developer experience), Design (the visual builders), Video (the dynamic creators), and Research (the data synthesizers). Each pillar is expansive on its own. Together, they form a closed loop.
+        </p>
+      </section>
+
+      <!-- Pillars at a Glance -->
+      <section class="article-section" id="pillars">
+        <h2>At a Glance: All 6 Pillars</h2>
+        <p>Before we go deep, here's the full picture. Each card links to its detailed section below.</p>
+
+        <div class="pillars-grid">
+          <a href="#models">
+            <div class="p-card" data-p="models">
+              <span class="p-icon">🧠</span>
+              <span class="p-badge">Models</span>
+              <p class="p-name">The Brain</p>
+              <p class="p-desc">Foundation models that power every layer of the stack.</p>
+              <div class="p-chips">
+                <span class="chip">Gemini 3 Pro</span>
+                <span class="chip">Flash</span>
+                <span class="chip">Gemma</span>
+              </div>
+            </div>
+          </a>
+          <a href="#agents">
+            <div class="p-card" data-p="agents">
+              <span class="p-icon">⚙️</span>
+              <span class="p-badge">AI Agents</span>
+              <p class="p-name">The Autonomous Workers</p>
+              <p class="p-desc">Agents that act, delegate, and execute complex multi-step workflows.</p>
+              <div class="p-chips">
+                <span class="chip">Google ADK</span>
+                <span class="chip">A2A</span>
+                <span class="chip">Pomelli</span>
+              </div>
+            </div>
+          </a>
+          <a href="#coding">
+            <div class="p-card" data-p="coding">
+              <span class="p-icon">💻</span>
+              <span class="p-badge">Coding</span>
+              <p class="p-name">The Developer Experience</p>
+              <p class="p-desc">AI-native tools that reshape how software is written and shipped.</p>
+              <div class="p-chips">
+                <span class="chip">Antigravity IDE</span>
+                <span class="chip">Jules</span>
+                <span class="chip">Gemini CLI</span>
+              </div>
+            </div>
+          </a>
+          <a href="#design">
+            <div class="p-card" data-p="design">
+              <span class="p-icon">🎨</span>
+              <span class="p-badge">Design</span>
+              <p class="p-name">The Visual Builders</p>
+              <p class="p-desc">Tools for generating and composing visual assets at AI speed.</p>
+              <div class="p-chips">
+                <span class="chip">Stitch</span>
+                <span class="chip">Whisk</span>
+                <span class="chip">Nanobanana</span>
+              </div>
+            </div>
+          </a>
+          <a href="#video">
+            <div class="p-card" data-p="video">
+              <span class="p-icon">📹</span>
+              <span class="p-badge">Video</span>
+              <p class="p-name">The Dynamic Creators</p>
+              <p class="p-desc">Next-generation video synthesis and cinematic AI generation tools.</p>
+              <div class="p-chips">
+                <span class="chip">Veo 3.1</span>
+                <span class="chip">Flow</span>
+              </div>
+            </div>
+          </a>
+          <a href="#research">
+            <div class="p-card" data-p="research">
+              <span class="p-icon">🔍</span>
+              <span class="p-badge">Research</span>
+              <p class="p-name">The Data Synthesizers</p>
+              <p class="p-desc">Tools that turn vast information into structured, queryable knowledge.</p>
+              <div class="p-chips">
+                <span class="chip">NotebookLM</span>
+                <span class="chip">AI Mode</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- Models -->
+      <section class="article-section" id="models">
+        <h2>🧠 Pillar 1: Models — The Brain</h2>
+        <p>
+          Every layer of Google's stack is powered by its foundation models. The Gemini family has matured into a tiered intelligence system — one model for every cost and latency profile, and an open-weight option for teams that need full control.
+        </p>
+        <div class="p-detail">
+          <div class="p-detail-head">
+            <div class="p-detail-emoji">🧠</div>
+            <div class="p-detail-meta">
+              <h3>Foundation Models</h3>
+              <p class="sub">The intelligence substrate of the entire ecosystem</p>
+            </div>
+          </div>
+          <ul class="tool-list">
+            <li class="tool-item">
+              <span class="tool-name">Gemini 3 Pro</span>
+              <span class="tool-desc">Flagship multimodal model for complex reasoning, long-context tasks, and advanced coding. The workhorse for serious AI applications.</span>
+            </li>
+            <li class="tool-item">
+              <span class="tool-name">Flash</span>
+              <span class="tool-desc">Speed-optimized model for high-throughput, latency-sensitive applications. Ideal for real-time features and cost-conscious workloads.</span>
+            </li>
+            <li class="tool-item">
+              <span class="tool-name">Gemma</span>
+              <span class="tool-desc">Open-weight models for local deployment, fine-tuning, and research. Gives developers full control without API dependencies.</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Agents -->
+      <section class="article-section" id="agents">
+        <h2>⚙️ Pillar 2: AI Agents — The Autonomous Workers</h2>
+        <p>
+          Models are intelligent — but agents are <em>capable</em>. This pillar represents Google's conviction that the future of AI isn't chatbots but autonomous workers: systems that can reason, delegate tasks, and take action across digital environments with minimal human handholding.
+        </p>
+        <div class="p-detail">
+          <div class="p-detail-head">
+            <div class="p-detail-emoji">⚙️</div>
+            <div class="p-detail-meta">
+              <h3>Agentic Infrastructure</h3>
+              <p class="sub">Frameworks and protocols for AI that acts, not just answers</p>
+            </div>
+          </div>
+          <ul class="tool-list">
+            <li class="tool-item">
+              <span class="tool-name">Google ADK</span>
+              <span class="tool-desc">Agent Development Kit — Google's framework for building, orchestrating, and deploying AI agents at production scale.</span>
+            </li>
+            <li class="tool-item">
+              <span class="tool-name">A2A</span>
+              <span class="tool-desc">Agent-to-Agent protocol. Enables different AI agents to communicate and collaborate, unlocking true multi-agent pipelines across services.</span>
+            </li>
+            <li class="tool-item">
+              <span class="tool-name">Pomelli</span>
+              <span class="tool-desc">An emerging tool in the agentic space extending Google's reach into specialized autonomous workflows and task orchestration.</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Coding -->
+      <section class="article-section" id="coding">
+        <h2>💻 Pillar 3: Coding — The Developer Experience</h2>
+        <p>
+          This pillar is perhaps the most immediately transformative for technical professionals. Google is betting that the IDE itself becomes a collaborator — not just an editor with fancy autocomplete, but an active participant in software development.
+        </p>
+        <div class="p-detail">
+          <div class="p-detail-head">
+            <div class="p-detail-emoji">💻</div>
+            <div class="p-detail-meta">
+              <h3>AI-Native Development</h3>
+              <p class="sub">Tools that make developers dramatically more productive</p>
+            </div>
+          </div>
+          <ul class="tool-list">
+            <li class="tool-item">
+              <span class="tool-name">Antigravity IDE</span>
+              <span class="tool-desc">A next-generation development environment built from the ground up with AI assistance at its core — not bolted on as an afterthought.</span>
+            </li>
+            <li class="tool-item">
+              <span class="tool-name">Jules</span>
+              <span class="tool-desc">Google's autonomous coding agent. Assigns tasks, writes code, runs tests, and opens PRs — like a tireless async collaborator that never blocks on your review.</span>
+            </li>
+            <li class="tool-item">
+              <span class="tool-name">Gemini CLI</span>
+              <span class="tool-desc">Brings Gemini's capabilities directly into the terminal. Ask questions, generate code, and run AI-powered commands without leaving your existing workflow.</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Design -->
+      <section class="article-section" id="design">
+        <h2>🎨 Pillar 4: Design — The Visual Builders</h2>
+        <p>
+          Visual creativity is being fundamentally restructured. These tools don't just assist designers — they give non-designers the ability to produce professional-grade visual output. The design bottleneck is dissolving.
+        </p>
+        <div class="p-detail">
+          <div class="p-detail-head">
+            <div class="p-detail-emoji">🎨</div>
+            <div class="p-detail-meta">
+              <h3>Visual Generation &amp; Composition</h3>
+              <p class="sub">AI-powered tools for building beautiful things at speed</p>
+            </div>
+          </div>
+          <ul class="tool-list">
+            <li class="tool-item">
+              <span class="tool-name">Stitch</span>
+              <span class="tool-desc">UI and design generation tool that translates prompts and wireframes into polished, production-ready interface components.</span>
+            </li>
+            <li class="tool-item">
+              <span class="tool-name">Whisk</span>
+              <span class="tool-desc">Image remixing and style transfer tool. Combine subjects, styles, and scenes to create original visual compositions from existing references.</span>
+            </li>
+            <li class="tool-item">
+              <span class="tool-name">Nanobanana</span>
+              <span class="tool-desc">A creative AI tool expanding Google's design palette — bringing generative capabilities into new creative contexts and visual formats.</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Video -->
+      <section class="article-section" id="video">
+        <h2>📹 Pillar 5: Video — The Dynamic Creators</h2>
+        <p>
+          Video is the most expressive and most expensive medium to produce. Google's video AI tools are collapsing the gap between a concept and a finished film in ways that were unimaginable just two years ago.
+        </p>
+        <div class="p-detail">
+          <div class="p-detail-head">
+            <div class="p-detail-emoji">📹</div>
+            <div class="p-detail-meta">
+              <h3>AI Video Generation</h3>
+              <p class="sub">From prompt to cinematic content at unprecedented speed</p>
+            </div>
+          </div>
+          <ul class="tool-list">
+            <li class="tool-item">
+              <span class="tool-name">Veo 3.1</span>
+              <span class="tool-desc">Google's state-of-the-art video generation model. High-resolution, temporally consistent, cinematically compelling video from text and image inputs.</span>
+            </li>
+            <li class="tool-item">
+              <span class="tool-name">Flow</span>
+              <span class="tool-desc">AI-native video editing and sequencing tool designed to work alongside Veo — turning raw generation into polished, narrative-driven finished video.</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Research -->
+      <section class="article-section" id="research">
+        <h2>🔍 Pillar 6: Research — The Data Synthesizers</h2>
+        <p>
+          Knowledge work is being transformed by AI's ability to read, synthesize, and query large bodies of information on demand. This pillar is the most immediately accessible for analysts, strategists, and anyone whose job involves processing information.
+        </p>
+        <div class="p-detail">
+          <div class="p-detail-head">
+            <div class="p-detail-emoji">🔍</div>
+            <div class="p-detail-meta">
+              <h3>Knowledge &amp; Research Tools</h3>
+              <p class="sub">AI that turns information overload into structured insight</p>
+            </div>
+          </div>
+          <ul class="tool-list">
+            <li class="tool-item">
+              <span class="tool-name">NotebookLM</span>
+              <span class="tool-desc">Upload documents, papers, and notes — then converse with them. NotebookLM grounds AI responses in your specific sources, making it a powerful, hallucination-resistant research collaborator.</span>
+            </li>
+            <li class="tool-item">
+              <span class="tool-name">AI Mode</span>
+              <span class="tool-desc">Google's AI-enhanced search mode. Goes beyond links to synthesize multi-source answers, making the web queryable as a single, coherent knowledge base.</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Takeaways -->
+      <div class="takeaways-block" id="takeaways">
+        <h2>Key Takeaways</h2>
+        <p class="t-sub">What this ecosystem means for your career and work</p>
+        <ul class="t-list">
+          <li class="t-item">
+            <span class="t-num">1</span>
+            <p class="t-text"><strong>It's a platform, not a product.</strong> Google isn't selling individual tools — it's building a closed-loop stack. Understanding the whole is more strategically valuable than mastering any single piece.</p>
+          </li>
+          <li class="t-item">
+            <span class="t-num">2</span>
+            <p class="t-text"><strong>Every knowledge worker is affected.</strong> Research, design, coding, and video are all being transformed simultaneously. Staying in your narrow lane is no longer a safe strategy.</p>
+          </li>
+          <li class="t-item">
+            <span class="t-num">3</span>
+            <p class="t-text"><strong>Agents are the step change.</strong> Moving from models to agents represents a qualitative shift — AI that <em>acts</em>, not just answers. This is where the most leverage will be unlocked.</p>
+          </li>
+          <li class="t-item">
+            <span class="t-num">4</span>
+            <p class="t-text"><strong>The interface is dissolving.</strong> Between Gemini CLI, NotebookLM, and AI Mode, Google is pushing AI into every surface — terminal, document, browser. The competitive skill is integration, not just usage.</p>
+          </li>
+          <li class="t-item">
+            <span class="t-num">5</span>
+            <p class="t-text"><strong>Open + proprietary is deliberate.</strong> Gemma alongside Gemini Pro isn't a contradiction — it's a strategy to capture both enterprise and developer mindshare simultaneously. Watch this dynamic closely.</p>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Closing -->
+      <section class="article-ending" id="closing">
+        <h2>The Map Is Not the Territory — But It Helps</h2>
+        <p>
+          Understanding Google's full AI stack won't make you an expert in any single tool overnight. But it gives you something more durable: the context to make smarter bets on where to invest your learning time, which tools to adopt early, and how to articulate what's happening to colleagues and clients who are still catching up.
+        </p>
+        <p>
+          The professionals who thrive in the next five years won't be those who used the most AI tools — they'll be the ones who understood how the layers connect. The stack above is your starting point.
+        </p>
+
+        <div class="author-card">
+          <div class="author-avatar">강</div>
+          <div class="author-info">
+            <h4>강수근 (Kang Sugeun)</h4>
+            <p>AI 생태계와 커리어 전략에 대해 씁니다. Writing about AI ecosystems, tools, and career strategy at the intersection of technology and practical work.</p>
+          </div>
+        </div>
+
+        <div class="tags-row">
+          <span class="tag">#AIusage</span>
+          <span class="tag">#구글</span>
+          <span class="tag">#구글AI</span>
+          <span class="tag">#AItools</span>
+          <span class="tag">#GoogleAI</span>
+          <span class="tag">#2026</span>
+          <span class="tag">#FullStackAI</span>
+          <span class="tag">#CareerStrategy</span>
+        </div>
+      </section>
+
+    </article>
+  </div>
+
+  <footer class="site-footer">
+    <p>Published May 12, 2026 · Written by 강수근</p>
+    <p>Google's Full Stack AI Ecosystem · 6 Pillars · Models · Agents · Coding · Design · Video · Research</p>
+  </footer>
+
+</body>
+</html>
