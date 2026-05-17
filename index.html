@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kangpro Note</title>
+<style>
+  :root {
+    --accent: #1a5fa8;
+    --accent-light: #e8f0fb;
+    --ink: #111827;
+    --ink-muted: #6b7280;
+    --border: #e5e7eb;
+    --surface: #ffffff;
+    --surface-alt: #f9fafb;
+    --radius: 10px;
+    --shadow: 0 2px 12px rgba(0,0,0,0.07);
+    --font: 'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font); background: var(--surface-alt); color: var(--ink); line-height: 1.6; }
+
+  header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 2.5rem 2rem 2rem; }
+  .header-inner { max-width: 1100px; margin: 0 auto; }
+  .eyebrow { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; color: var(--accent); text-transform: uppercase; margin-bottom: 0.4rem; }
+  h1 { font-size: 2.4rem; font-weight: 800; color: var(--ink); margin-bottom: 0.4rem; }
+  .subtitle { font-size: 0.95rem; color: var(--ink-muted); margin-bottom: 1.5rem; }
+
+  .search-wrap { position: relative; max-width: 700px; }
+  .search-wrap input {
+    width: 100%; padding: 0.7rem 1rem 0.7rem 2.5rem;
+    border: 1px solid var(--border); border-radius: var(--radius);
+    font-size: 0.95rem; font-family: var(--font); outline: none;
+    background: var(--surface-alt); transition: border-color .15s;
+  }
+  .search-wrap input:focus { border-color: var(--accent); background: #fff; }
+  .search-wrap svg { position: absolute; left: 0.75rem; top: 50%; transform: translateY(-50%); color: var(--ink-muted); }
+
+  .tags-bar { max-width: 1100px; margin: 1rem auto 0; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .tag-pill {
+    padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.78rem; cursor: pointer;
+    background: var(--surface); border: 1px solid var(--border); color: var(--ink-muted);
+    transition: all .15s; white-space: nowrap;
+  }
+  .tag-pill:hover, .tag-pill.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+  main { max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.25rem; }
+
+  .card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 1.4rem; display: flex; flex-direction: column; gap: 0.6rem;
+    box-shadow: var(--shadow); transition: box-shadow .15s, transform .15s;
+  }
+  .card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.12); transform: translateY(-2px); }
+
+  .card-title { font-size: 1.05rem; font-weight: 700; color: var(--accent); line-height: 1.4; }
+  .card-title a { color: inherit; text-decoration: none; }
+  .card-title a:hover { text-decoration: underline; }
+  .card-date { font-size: 0.8rem; color: var(--ink-muted); }
+  .card-type { font-size: 0.78rem; color: var(--ink-muted); font-style: italic; }
+  .card-source { font-size: 0.72rem; color: var(--ink-muted); word-break: break-all; }
+  .card-excerpt { font-size: 0.85rem; color: #374151; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; flex: 1; }
+  .card-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: auto; }
+  .card-tag {
+    font-size: 0.72rem; padding: 0.15rem 0.55rem; border-radius: 999px;
+    background: var(--accent-light); color: var(--accent); cursor: pointer;
+  }
+  .card-tag:hover { background: var(--accent); color: #fff; }
+  .card-btn {
+    display: inline-block; margin-top: 0.6rem; padding: 0.45rem 1rem;
+    border: 1.5px solid var(--accent); border-radius: var(--radius);
+    font-size: 0.82rem; font-weight: 600; color: var(--accent);
+    text-decoration: none; transition: all .15s; text-align: center;
+  }
+  .card-btn:hover { background: var(--accent); color: #fff; }
+
+  .empty { text-align: center; color: var(--ink-muted); padding: 4rem 0; font-size: 1rem; }
+  footer { text-align: center; padding: 2rem; font-size: 0.78rem; color: var(--ink-muted); border-top: 1px solid var(--border); margin-top: 2rem; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="eyebrow">Marktl Archive</div>
+    <h1>Kangpro Note</h1>
+    <p class="subtitle" id="subtitle">노트를 불러오는 중...</p>
+    <div class="search-wrap">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" id="search" placeholder="문서 제목, 태그, 출처 검색..." oninput="render()">
+    </div>
+  </div>
+  <div class="tags-bar" id="tags-bar"></div>
+</header>
+
+<main>
+  <div class="grid" id="grid"></div>
+  <div class="empty" id="empty" style="display:none">검색 결과가 없습니다.</div>
+</main>
+
+<footer>Powered by <a href="https://github.com/reallygood83/marktl" style="color:var(--accent)">MarkTL</a> · <a href="https://github.com/thelyver/sylverdocs" style="color:var(--accent)">sylverdocs</a></footer>
+
+<script>
+  let allItems = [];
+  let activeTag = 'all';
+
+  function fmt(iso) {
+    if (!iso) return '';
+    return iso.slice(0, 10);
+  }
+
+  function cleanTags(tags) {
+    return (tags || []).map(t => t.replace(/^-\s*/, '').trim()).filter(Boolean);
+  }
+
+  function allTags(items) {
+    const set = new Set();
+    items.forEach(i => cleanTags(i.tags).forEach(t => set.add(t)));
+    return [...set].sort();
+  }
+
+  function renderTags(items) {
+    const bar = document.getElementById('tags-bar');
+    const tags = allTags(items);
+    bar.innerHTML = '';
+    const makeTag = (label, value) => {
+      const el = document.createElement('button');
+      el.className = 'tag-pill' + (activeTag === value ? ' active' : '');
+      el.textContent = label;
+      el.onclick = () => { activeTag = value; renderTags(allItems); render(); };
+      bar.appendChild(el);
+    };
+    makeTag('All', 'all');
+    tags.forEach(t => makeTag('#' + t + ' ' + items.filter(i => cleanTags(i.tags).includes(t)).length, t));
+  }
+
+  function render() {
+    const q = document.getElementById('search').value.toLowerCase();
+    const grid = document.getElementById('grid');
+    const empty = document.getElementById('empty');
+
+    let items = allItems;
+    if (activeTag !== 'all') items = items.filter(i => cleanTags(i.tags).includes(activeTag));
+    if (q) items = items.filter(i =>
+      (i.title || '').toLowerCase().includes(q) ||
+      (i.excerpt || '').toLowerCase().includes(q) ||
+      (i.sourcePath || '').toLowerCase().includes(q) ||
+      cleanTags(i.tags).some(t => t.toLowerCase().includes(q))
+    );
+
+    if (items.length === 0) { grid.innerHTML = ''; empty.style.display = ''; return; }
+    empty.style.display = 'none';
+
+    grid.innerHTML = items.map(item => {
+      const tags = cleanTags(item.tags);
+      const tagHtml = tags.map(t =>
+        `<span class="card-tag" onclick="activeTag='${t}';renderTags(allItems);render()">#${t}</span>`
+      ).join('');
+      return `
+        <div class="card">
+          <div class="card-title"><a href="${item.url}" target="_blank" rel="noopener">${item.title || '(제목 없음)'}</a></div>
+          <div class="card-date">${fmt(item.updatedAt)}</div>
+          ${item.artifactType ? `<div class="card-type">${item.artifactType}</div>` : ''}
+          ${item.sourcePath ? `<div class="card-source">${item.sourcePath}</div>` : ''}
+          ${item.excerpt ? `<div class="card-excerpt">${item.excerpt}</div>` : ''}
+          ${tagHtml ? `<div class="card-tags">${tagHtml}</div>` : ''}
+          <a class="card-btn" href="${item.url}" target="_blank" rel="noopener">Open artifact</a>
+        </div>`;
+    }).join('');
+  }
+
+  async function load() {
+    try {
+      const res = await fetch('./marktl/index.json?t=' + Date.now());
+      const data = await res.json();
+      allItems = (data.items || []).sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
+      document.getElementById('subtitle').textContent =
+        `${allItems.length}개의 게시 문서. 검색하고 필터링해서 열어보세요.`;
+      renderTags(allItems);
+      render();
+    } catch (e) {
+      document.getElementById('subtitle').textContent = '문서를 불러오지 못했습니다.';
+    }
+  }
+
+  load();
+</script>
+</body>
+</html>
