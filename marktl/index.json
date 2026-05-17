@@ -1,16 +1,36 @@
 {
   "version": 1,
-  "updatedAt": "2026-05-17T14:51:44.500Z",
+  "updatedAt": "2026-05-17T15:12:21.240Z",
   "items": [
     {
-      "slug": "20260517-시니어-연령구분별-규모와-지원사업-타깃판단",
+      "slug": "google-full-stack-ai-ecosystem",
+      "shortId": "1rm27ur",
+      "url": "https://thelyver.github.io/sylverdocs/marktl/s/1rm27ur/",
+      "canonicalUrl": "https://thelyver.github.io/sylverdocs/marktl/google-full-stack-ai-ecosystem/",
+      "sourcePath": "400.AI/How to use AI/Google Full Stack AI Ecosystem.md",
+      "artifactType": "interactive-explainer",
+      "title": "google-full-stack-ai-ecosystem",
+      "excerpt": "Take a look at Google’s Full Stack AI Ecosystem for 2026. If you want to futureproof your career, you need to see how these pieces connect. It breaks down into 6 main pillars: 🧠 M",
+      "tags": [
+        "- AIusage",
+        "note",
+        "AIusage",
+        "구글",
+        "구글AI",
+        "AItools",
+        "강수근"
+      ],
+      "updatedAt": "2026-05-17T15:12:21.240Z"
+    },
+    {
+      "slug": "20260517-ìëì´-ì°ë ¹êµ¬ë¶ë³-ê·ëª¨ì-ì§ìì¬ì-íê¹íë¨",
       "shortId": "2i2y2i",
       "url": "https://thelyver.github.io/sylverdocs/marktl/s/2i2y2i/",
       "canonicalUrl": "https://thelyver.github.io/sylverdocs/marktl/20260517-%EC%8B%9C%EB%8B%88%EC%96%B4-%EC%97%B0%EB%A0%B9%EA%B5%AC%EB%B6%84%EB%B3%84-%EA%B7%9C%EB%AA%A8%EC%99%80-%EC%A7%80%EC%9B%90%EC%82%AC%EC%97%85-%ED%83%80%EA%B9%83%ED%8C%90%EB%8B%A8/",
-      "sourcePath": "001.Inbox/시니어-사업개발/20260517_시니어-연령구분별-규모와-지원사업-타깃판단.md",
+      "sourcePath": "001.Inbox/ìëì´-ì¬ìê°ë°/20260517_ìëì´-ì°ë ¹êµ¬ë¶ë³-ê·ëª¨ì-ì§ìì¬ì-íê¹íë¨.md",
       "artifactType": "research-report",
-      "title": "시니어 연령구분별 규모와 국가 AI 지원사업 타깃 판단",
-      "excerpt": "확인일: 20260517 1. 연령구분별 대략적 규모 아래 수치는 20252026년 현재 가용한 공공통계와 발표자료를 바탕으로 한 대략치이다. | 구분      |     연령 |    대략 규모 | 해석                                                     | 번호  | |  | ",
+      "title": "ìëì´ ì°ë ¹êµ¬ë¶ë³ ê·ëª¨ì êµ­ê° AI ì§ìì¬ì íê¹ íë¨",
+      "excerpt": "íì¸ì¼: 20260517 1. ì°ë ¹êµ¬ë¶ë³ ëëµì  ê·ëª¨ ìë ìì¹ë 20252026ë íì¬ ê°ì©í ê³µê³µíµê³ì ë°íìë£ë¥¼ ë°íì¼ë¡ í ëëµì¹ì´ë¤. | êµ¬ë¶      |     ì°ë ¹ |    ëëµ ê·ëª¨ | í´ì                                                     | ë²í¸  | |  | ",
       "tags": [],
       "updatedAt": "2026-05-17T14:51:44.500Z"
     }
