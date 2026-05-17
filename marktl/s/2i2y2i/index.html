@@ -300,9 +300,14 @@
     white-space: nowrap;
   }
   tbody td:nth-child(2) {
-    white-space: nowrap;
+    word-break: keep-all;
     color: var(--ink-muted);
     font-variant-numeric: tabular-nums;
+    min-width: 160px;
+  }
+  tbody td:last-child {
+    word-break: keep-all;
+    min-width: 160px;
   }
 
   /* row highlight */
