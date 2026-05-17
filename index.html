@@ -105,10 +105,28 @@
   let allItems = [];
   let activeTag = 'all';
 
-  function fmt(iso) {
-    if (!iso) return '';
-    return iso.slice(0, 10);
+  // MarkTL bug: Korean text in index.json is double-encoded (UTF-8 bytes → Latin-1 → UTF-8).
+  // Fix: if all chars are ≤ U+00FF, treat code points as raw bytes and re-decode as UTF-8.
+  function fixEncoding(str) {
+    if (!str) return str;
+    try {
+      if ([...str].some(c => c.charCodeAt(0) > 0xFF)) return str; // already proper Unicode
+      const bytes = new Uint8Array([...str].map(c => c.charCodeAt(0)));
+      return new TextDecoder('utf-8').decode(bytes);
+    } catch(e) { return str; }
   }
+
+  function fixItem(item) {
+    return {
+      ...item,
+      title: fixEncoding(item.title),
+      excerpt: fixEncoding(item.excerpt),
+      sourcePath: fixEncoding(item.sourcePath),
+      tags: (item.tags || []).map(fixEncoding),
+    };
+  }
+
+  function fmt(iso) { return iso ? iso.slice(0, 10) : ''; }
 
   function cleanTags(tags) {
     return (tags || []).map(t => t.replace(/^-\s*/, '').trim()).filter(Boolean);
@@ -155,7 +173,7 @@
     grid.innerHTML = items.map(item => {
       const tags = cleanTags(item.tags);
       const tagHtml = tags.map(t =>
-        `<span class="card-tag" onclick="activeTag='${t}';renderTags(allItems);render()">#${t}</span>`
+        `<span class="card-tag" onclick="activeTag='${t.replace(/'/g,"\\'")}';renderTags(allItems);render()">#${t}</span>`
       ).join('');
       return `
         <div class="card">
@@ -174,12 +192,14 @@
     try {
       const res = await fetch('./marktl/index.json?t=' + Date.now());
       const data = await res.json();
-      allItems = (data.items || []).sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
+      allItems = (data.items || [])
+        .map(fixItem)
+        .sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
       document.getElementById('subtitle').textContent =
         `${allItems.length}개의 게시 문서. 검색하고 필터링해서 열어보세요.`;
       renderTags(allItems);
       render();
-    } catch (e) {
+    } catch(e) {
       document.getElementById('subtitle').textContent = '문서를 불러오지 못했습니다.';
     }
   }
