@@ -1,0 +1,1580 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+
+
+
+
+
+
+<title>시니어 AI 벤치마킹 사례맵 — 국내·해외 50선</title>
+<style>
+  /* ── Reset & Base ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #1a2744;
+    --navy-mid: #253259;
+    --indigo: #3b4f8c;
+    --blue-light: #e8edf9;
+    --accent: #4f7ef7;
+    --accent-warm: #f4693a;
+    --accent-teal: #2bbfa4;
+    --accent-violet: #7c5cbf;
+    --text-primary: #18202e;
+    --text-secondary: #4a5568;
+    --text-muted: #718096;
+    --border: #dde3f0;
+    --bg: #f7f8fc;
+    --card-bg: #ffffff;
+    --tag-bg: #eef1fb;
+    --radius: 12px;
+    --radius-sm: 7px;
+    --shadow: 0 2px 16px rgba(26,39,68,.08);
+    --shadow-md: 0 4px 28px rgba(26,39,68,.13);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    line-height: 1.78;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Layout ── */
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .container--wide {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ── Header / Hero ── */
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--indigo) 60%, #5a6fc4 100%);
+    color: #fff;
+    padding: 72px 0 56px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='40' cy='40' r='38' fill='none' stroke='rgba(255,255,255,.04)' stroke-width='1'/%3E%3C/svg%3E") center/80px 80px;
+  }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.65);
+    margin-bottom: 20px;
+  }
+  .hero-eyebrow span {
+    display: inline-block;
+    width: 20px; height: 2px;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+  .hero h1 {
+    font-size: clamp(26px, 4vw, 42px);
+    font-weight: 800;
+    line-height: 1.28;
+    letter-spacing: -.02em;
+    margin-bottom: 20px;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: #7fb3ff;
+  }
+  .hero-excerpt {
+    font-size: 17px;
+    color: rgba(255,255,255,.82);
+    max-width: 640px;
+    line-height: 1.72;
+    margin-bottom: 32px;
+  }
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .meta-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12.5px;
+    background: rgba(255,255,255,.12);
+    color: rgba(255,255,255,.85);
+    padding: 5px 13px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,.18);
+  }
+
+  /* ── Nav / TOC ── */
+  .toc-bar {
+    background: var(--card-bg);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(26,39,68,.06);
+  }
+  .toc-inner {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    overflow-x: auto;
+    padding: 0 24px;
+    scrollbar-width: none;
+  }
+  .toc-inner::-webkit-scrollbar { display: none; }
+  .toc-link {
+    display: inline-block;
+    padding: 14px 14px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: color .2s, border-color .2s;
+  }
+  .toc-link:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  /* ── Abstract / Summary Cards ── */
+  .abstract-section {
+    padding: 56px 0 40px;
+  }
+  .abstract-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    margin-top: 32px;
+  }
+  @media (max-width: 700px) {
+    .abstract-grid { grid-template-columns: 1fr; }
+  }
+  .stat-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    box-shadow: var(--shadow);
+    text-align: center;
+  }
+  .stat-card .num {
+    font-size: 48px;
+    font-weight: 900;
+    line-height: 1;
+    background: linear-gradient(135deg, var(--accent), var(--accent-teal));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+  }
+  .stat-card .label {
+    font-size: 14px;
+    color: var(--text-secondary);
+    font-weight: 600;
+  }
+
+  /* ── Section Structure ── */
+  .section {
+    padding: 56px 0;
+  }
+  .section + .section {
+    border-top: 1px solid var(--border);
+  }
+  .section-header {
+    margin-bottom: 36px;
+  }
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11.5px;
+    font-weight: 800;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 16px; height: 2px;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+  .section-title {
+    font-size: clamp(20px, 3vw, 28px);
+    font-weight: 800;
+    letter-spacing: -.02em;
+    color: var(--navy);
+    margin-bottom: 12px;
+  }
+  .section-desc {
+    font-size: 15.5px;
+    color: var(--text-secondary);
+    max-width: 680px;
+    line-height: 1.72;
+  }
+
+  /* ── Pull Quote ── */
+  .pull-quote {
+    margin: 40px 0;
+    padding: 28px 32px;
+    border-left: 4px solid var(--accent);
+    background: var(--blue-light);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  }
+  .pull-quote p {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.6;
+    margin: 0;
+  }
+  .pull-quote cite {
+    display: block;
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--text-muted);
+    font-style: normal;
+  }
+
+  /* ── Axis Cards ── */
+  .axis-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 24px;
+  }
+  @media (max-width: 600px) { .axis-grid { grid-template-columns: 1fr; } }
+  .axis-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: var(--shadow);
+  }
+  .axis-card h3 {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .axis-card h3 .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .axis-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+  .axis-card ul li {
+    font-size: 14px;
+    color: var(--text-secondary);
+    padding: 6px 12px;
+    background: var(--bg);
+    border-radius: var(--radius-sm);
+    border-left: 3px solid transparent;
+  }
+  .axis-card ul li strong {
+    color: var(--text-primary);
+    font-weight: 700;
+  }
+
+  /* ── Tables ── */
+  .table-wrapper {
+    overflow-x: auto;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin: 24px 0;
+    border: 1px solid var(--border);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card-bg);
+    font-size: 13.5px;
+  }
+  thead {
+    background: var(--navy);
+    color: #fff;
+  }
+  thead th {
+    padding: 13px 14px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .04em;
+    text-align: left;
+    white-space: normal;
+    word-break: keep-all;
+    min-width: 80px;
+  }
+  tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background .15s;
+  }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: var(--blue-light); }
+  tbody td {
+    padding: 11px 14px;
+    color: var(--text-secondary);
+    vertical-align: top;
+    word-break: keep-all;
+    min-width: 120px;
+    line-height: 1.6;
+    white-space: normal;
+  }
+  tbody td:first-child {
+    font-weight: 700;
+    color: var(--text-muted);
+    font-size: 12px;
+    min-width: 36px;
+    text-align: center;
+  }
+  tbody td strong {
+    color: var(--text-primary);
+    font-weight: 700;
+  }
+  .url-cell a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 12px;
+    word-break: break-all;
+  }
+  .url-cell a:hover { text-decoration: underline; }
+  .tag-type {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 9px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .tag--care { background: #fff0eb; color: #c4501e; }
+  .tag--edu { background: #ebf4ff; color: #1a65c4; }
+  .tag--health { background: #ebfbf5; color: #157a55; }
+  .tag--ops { background: #f4ebff; color: #6a3db5; }
+  .tag--social { background: #fffae8; color: #9a6c00; }
+  .tag--safety { background: #ffeef0; color: #b41f35; }
+  .tag--living { background: #e8f7ff; color: #1177a8; }
+  .tag--robot { background: #f0ebff; color: #5a3fa0; }
+  .tag--memory { background: #fff5e8; color: #a05a00; }
+  .tag--companion { background: #ebf9ff; color: #0a6f9a; }
+  .tag--ecosystem { background: #f2f9eb; color: #4a7a1a; }
+
+  /* ── Idea Grid ── */
+  .idea-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 24px;
+  }
+  @media (max-width: 750px) { .idea-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 480px) { .idea-grid { grid-template-columns: 1fr; } }
+  .idea-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+  }
+  .idea-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-teal));
+  }
+  .idea-num {
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--blue-light);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .idea-title {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  .idea-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  /* ── Key Findings ── */
+  .findings-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 24px;
+  }
+  .finding-item {
+    display: flex;
+    gap: 16px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px 24px;
+    box-shadow: var(--shadow);
+  }
+  .finding-icon {
+    font-size: 22px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .finding-body h4 {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+  .finding-body p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.66;
+    margin: 0;
+  }
+
+  /* ── Cross Matrix Table ── */
+  .matrix-table thead th:first-child { min-width: 100px; }
+  .matrix-table td { font-size: 12.5px; }
+  .matrix-label {
+    font-weight: 800;
+    color: var(--navy);
+    background: var(--blue-light) !important;
+    font-size: 12px;
+  }
+
+  /* ── Next Steps ── */
+  .checklist {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 18px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: 14.5px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+  .checklist li::before {
+    content: '□';
+    font-size: 16px;
+    color: var(--accent);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ── URL Notes ── */
+  .url-note-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 24px;
+  }
+  @media (max-width: 620px) { .url-note-grid { grid-template-columns: 1fr; } }
+  .url-note-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px;
+    box-shadow: var(--shadow);
+  }
+  .url-note-card h4 {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .url-note-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .url-note-card ul li {
+    font-size: 13px;
+    color: var(--text-secondary);
+    padding: 4px 0;
+    border-bottom: 1px dashed var(--border);
+  }
+  .url-note-card ul li:last-child { border-bottom: none; }
+  .status-dot {
+    display: inline-block;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    margin-right: 7px;
+    vertical-align: middle;
+  }
+  .dot-green { background: #2bbfa4; }
+  .dot-orange { background: #f4693a; }
+  .dot-gray { background: #a0aec0; }
+
+  /* ── Footer ── */
+  .footer {
+    background: var(--navy);
+    color: rgba(255,255,255,.6);
+    padding: 40px 0;
+    margin-top: 64px;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .footer-inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .footer strong {
+    color: rgba(255,255,255,.9);
+    font-weight: 700;
+  }
+  .footer a {
+    color: #7fb3ff;
+    text-decoration: none;
+  }
+  .footer a:hover { text-decoration: underline; }
+
+  /* ── Divider ── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    margin: 0;
+  }
+
+  /* ── Alert / Notice ── */
+  .notice {
+    background: #fffae8;
+    border: 1px solid #f0d080;
+    border-left: 4px solid #e6b800;
+    border-radius: var(--radius-sm);
+    padding: 16px 20px;
+    font-size: 13.5px;
+    color: #5a4500;
+    line-height: 1.7;
+    margin: 24px 0;
+  }
+  .notice strong { color: #3a2c00; }
+
+  /* ── Responsive ── */
+  @media (max-width: 600px) {
+    .hero { padding: 48px 0 36px; }
+    .section { padding: 40px 0; }
+    .container { padding: 0 16px; }
+    .container--wide { padding: 0 16px; }
+  }
+</style>
+<meta property="og:type" content="article">
+<meta property="og:title" content="시니어 AI 벤치마킹 사례맵 — 국내/해외 1차 넓은 탐색 URL 보강판">
+<meta property="og:description" content="확인일: 20260517 수정일: 20260517 목적: 예비/액티브/전환기/후기 시니어 구분과 교육형·생활지원형·돌봄안전형·기관운영형·창의/정서형을 교차해 가능한 아이디어 폭을 넓힌다. 이번 판에서는 각 사례별로 서비스를 체험하거나 확인할 수 있는 URL을 추가했다. 주의: 일부 항목은 정식 서비스가 아니라 보도자료, ">
+<meta property="og:url" content="https://thelyver.github.io/sylverdocs/marktl/s/zs22y3/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="시니어 AI 벤치마킹 사례맵 — 국내/해외 1차 넓은 탐색 URL 보강판">
+<meta name="twitter:description" content="확인일: 20260517 수정일: 20260517 목적: 예비/액티브/전환기/후기 시니어 구분과 교육형·생활지원형·돌봄안전형·기관운영형·창의/정서형을 교차해 가능한 아이디어 폭을 넓힌다. 이번 판에서는 각 사례별로 서비스를 체험하거나 확인할 수 있는 URL을 추가했다. 주의: 일부 항목은 정식 서비스가 아니라 보도자료, ">
+<link rel="canonical" href="https://thelyver.github.io/sylverdocs/marktl/s/zs22y3/">
+<style>
+td, th { white-space: normal !important; word-break: keep-all; min-width: 100px; }
+.table-wrap, table { overflow-x: auto; }
+</style></head>
+<body>
+
+<!-- ── HERO ── -->
+<header class="hero">
+  <div class="container">
+    <div class="hero-eyebrow"><span></span> Research Report · AgeTech Benchmarking</div>
+    <h1>시니어 AI 벤치마킹 사례맵<br><em>국내 20선 · 해외 30선</em></h1>
+    <p class="hero-excerpt">
+      예비·액티브·전환기·후기 시니어를 교차축으로, 교육형부터 돌봄·안전형까지 6개 유형별로 국내외 서비스 50선을 체계적으로 정리했다. 과기부 제안을 위한 전략적 시사점과 15개 창의 아이디어까지 담은 1차 넓은 탐색 보고서.
+    </p>
+    <div class="hero-meta">
+      <span class="meta-chip">확인일: 2026-05-17</span>
+      <span class="meta-chip">저자: 채피</span>
+      <span class="meta-chip">프로젝트: 시니어 사업개발</span>
+      <span class="meta-chip">국내 20개 + 해외 30개</span>
+    </div>
+  </div>
+</header>
+
+<!-- ── TOC ── -->
+<nav class="toc-bar" aria-label="목차">
+  <div class="toc-inner">
+    <a href="#abstract" class="toc-link">개요</a>
+    <a href="#axes" class="toc-link">분석 축</a>
+    <a href="#domestic" class="toc-link">국내 사례</a>
+    <a href="#global" class="toc-link">해외 사례</a>
+    <a href="#matrix" class="toc-link">교차 맵</a>
+    <a href="#ideas" class="toc-link">창의 아이디어</a>
+    <a href="#findings" class="toc-link">핵심 판단</a>
+    <a href="#nextsteps" class="toc-link">다음 단계</a>
+    <a href="#sources" class="toc-link">URL 메모</a>
+  </div>
+</nav>
+
+<!-- ── ABSTRACT ── -->
+<section id="abstract" class="abstract-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Abstract</div>
+      <h2 class="section-title">이 보고서는 무엇을 담고 있나</h2>
+      <p class="section-desc">
+        고령화 사회 전환 가속과 AI 기술 성숙이 맞물리며, 시니어를 위한 AI·AgeTech 서비스는 빠르게 다양화되고 있다. 이 보고서는 국내 20개·해외 30개 사례를 수집해 유형과 수혜자 그룹을 교차 분석하고, 한국 과기부 제안 전략의 방향을 도출했다.
+      </p>
+    </div>
+    <div class="abstract-grid">
+      <div class="stat-card">
+        <div class="num">20</div>
+        <div class="label">국내 사례<br><span>돌봄·안전 중심</span></div>
+      </div>
+      <div class="stat-card">
+        <div class="num">30</div>
+        <div class="label">해외 사례<br><span>다양한 세부 장면</span></div>
+      </div>
+      <div class="stat-card">
+        <div class="num">15</div>
+        <div class="label">창의 아이디어<br><span>씨앗 제안</span></div>
+      </div>
+    </div>
+
+    <div class="pull-quote">
+      <p>"수혜자·사용자·비용부담자·운영기관을 분리 설계하는 것이 핵심 차별화 포인트다. 시니어 본인의 직접 사용만 고집하지 말 것."</p>
+      <cite>— 1차 판단 요약</cite>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── AXES ── -->
+<section id="axes" class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">분석 프레임</div>
+      <h2 class="section-title">분석 축 — 시니어 그룹 × 서비스 유형</h2>
+      <p class="section-desc">두 개의 독립 축을 교차해 서비스 아이디어의 폭을 최대화한다.</p>
+    </div>
+    <div class="axis-grid">
+      <div class="axis-card">
+        <h3><span class="dot"></span>시니어 그룹 (연령 구분)</h3>
+        <ul>
+          <li><strong>예비 시니어</strong> — 55~64세</li>
+          <li><strong>액티브 시니어</strong> — 65~74세</li>
+          <li><strong>전환기 시니어</strong> — 75~84세</li>
+          <li><strong>후기 고령자</strong> — 85세 이상</li>
+        </ul>
+      </div>
+      <div class="axis-card">
+        <h3><span class="dot"></span>서비스 유형 (6개 범주)</h3>
+        <ul>
+          <li><strong>교육형</strong> — AI 리터러시, 일자리, 창작</li>
+          <li><strong>생활지원형</strong> — 행정, 금융, 예약, 이동, 소비</li>
+          <li><strong>돌봄·안전형</strong> — 안부, 고립, 복약, 낙상, 응급</li>
+          <li><strong>건강·인지형</strong> — 만성질환, 치매, 인지훈련</li>
+          <li><strong>기관운영형</strong> — 복지관/지자체 업무 효율화</li>
+          <li><strong>창의·사회참여형</strong> — 여가, 세대교류, 콘텐츠</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── DOMESTIC ── -->
+<section id="domestic" class="section">
+  <div class="container--wide">
+    <div class="section-header">
+      <div class="section-label">국내 사례</div>
+      <h2 class="section-title">국내 시니어 AI 서비스 20선</h2>
+      <p class="section-desc">
+        AI 안부콜·AI 스피커·돌봄로봇·스마트플러그 중심의 돌봄·안전 사례가 다수를 차지하며, 상당수가 B2G 지자체 사업 형태로 운영된다.
+      </p>
+    </div>
+
+    <div class="notice">
+      <strong>주의:</strong> 일부 항목은 정식 서비스가 아니라 보도자료, 공식 소개, 연구·실증 페이지, 앱스토어, 정책자료로만 확인 가능한 참고 URL이다. 실제 체험 가능 여부는 지역·기관 계약·베타 상태에 따라 다를 수 있다.
+    </div>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>사례 / 서비스</th>
+            <th>유형</th>
+            <th>주 수혜자</th>
+            <th>실제 사용자</th>
+            <th>벤치마킹 포인트</th>
+            <th>확인/체험 URL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td><strong>네이버 클로바 케어콜</strong></td>
+            <td><span class="tag-type tag--care">돌봄·안전</span></td>
+            <td>독거/취약 시니어</td>
+            <td>지자체, 복지 담당자</td>
+            <td>AI 전화로 안부·식사·수면 확인, 위험 징후 담당자 연계</td>
+            <td class="url-cell"><a target="_blank" rel="noopener">보도자료 확인 →</a></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><strong>SKT NUGU 인공지능 돌봄 / 케어콜</strong></td>
+            <td><span class="tag-type tag--care">돌봄·안전</span></td>
+            <td>독거 어르신</td>
+            <td>어르신, ICT케어센터, 지자체</td>
+            <td>AI 스피커/AI콜 기반 말벗·안부확인·긴급구조</td>
+            <td class="url-cell"><a target="_blank" rel="noopener">SKT 뉴스룸 →</a></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td><strong>KT AI 케어 서비스</strong></td>
+            <td><span class="tag-type tag--care">돌봄·안전</span></td>
+            <td>고령 취약계층</td>
+            <td>지자체, 보건소, 보호자</td>
+            <td>LTE AI 스피커 기반 비대면 돌봄, 통합 플랫폼 지향</td>
+            <td class="url-cell"><a target="_blank" rel="noopener">보도자료 확인 →</a></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td><strong>효돌 AI 돌봄로봇</strong></td>
+            <td><span class="tag-type tag--robot">정서·돌봄</span></td>
+            <td>독거/후기 고령자</td>
+            <td>어르신, 보호자, 지자체</td>
+            <td>손주형 로봇, 말벗·복약·생활 알림·정서 모니터링</td>
+            <td class="url-cell"><a target="_blank" rel="noopener">공식 사이트 →</a></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td><strong>서울시 AI 안부확인서비스</strong></td>
+            <td><span class="tag-type tag--care">돌봄·안전</span></td>
+            <td>독거노인, 1인가구</td>
+            <td>서울시/자치구</td>
+            <td>주기적 AI 전화와 이상 징후 후속 조치, 양방향 확장</td>
+            <td class="url-cell"><a target="_blank" rel="noopener">서울시 공개자료 →</a></td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td><strong>서울시 스마트플러그</strong></td>
+            <td><span class="tag-type tag--care">돌봄·안전</span></td>
+            <td>독거노인</td>
+            <td>자치구 담당자</td>
+            <td>전력량/조도 기반 이상상황 탐지, 비침습 모니터링</td>
+            <td class="url-cell"><a target="_blank" rel="noopener">서울연구원 →</a></td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td><strong>서대문구 똑똑 문안서비스</strong></td>
+            <td><span class="tag-type tag--care">돌봄·안전</span></td>
+            <td>독거노인</td>
+            <td>자치구 담당자</td>
+            <td>통화 수발신 데이터 기반 응급상황 감지</td>
+            <td class="url-cell"><a target="_blank" rel="noopener">서울시 미디어허브 →</a></td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td><strong>금천구/동대문구 AI 안부든든</strong></td>
+            <td><span class="tag-type tag--care">돌봄·안전</span></td>
+            <td>1인 취약가구</td>
+            <td>자치구/통신사</td>
+            <td>전력·통신 데이터 분석으로 기기 설치 부담 완화</td>
+            <td class="url-cell"><a target="_blank" rel="noopener">서울시 미디어허브 →</a></td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td><strong>서울디지털재단 AI 돌봄로봇 지원</strong></td>
+            <td><span class="tag-type tag--robot">정서·돌봄</span></td>
+            <td>독거노인</td>
+            <td>복지관, 지자체</td>
+            <td>로봇 보급형 공공사업 모델</td>
+            <td class="url-cell"><a target="_blank" rel="noopener">서울 미디어허브 →</a></td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td><strong>서울시 손목닥터 9988</strong></td>
+            <td><span class="tag-type tag--health">건강·예방</span></td>
+            <td>액티브/전환기</td>
+            <td>시민, 서울시</td>
+            <td>웨어러블 기반 활동·수면·맥박 관리, 예방 건강관리</td>
+            <td class="url-cell"><a target="_blank" rel="noopener">서울시 공개자료 →</a></td>
+          </tr>
+          <tr>
+            <td>11</td>
+            <td><strong>카카오 찾아가는 시니어 디지털 스쿨</strong></td>
+            <td><span class="tag-type tag--edu">교육형</span></td>
+            <td>액티브/예비 시니어</td>
+            <td>복지관, 강사</td>
+            <td>스마트폰·금융·AI 특강 결합 가능</td>
+            <td class="url-cell"><a target="_blank" rel="noopener">공식 페이지 →</a></td>
+          </tr>
+          <tr>
+            <td>12</td>
+            <td><strong>카카오테크 AI 스쿨 시니어 특강</strong></td>
+            <td><span class="tag-type tag--edu">교육형</span></td>
+            <td>예비/액티브 시니어</td>
+            <td>NIA, 복지관</td>
+            <td>소상공인 AI 교육과 시니어 AI 교육 병행 구조</td>
+            <td class="url-cell"><a target="_blank" rel="noopener">인천타임즈 →</a></td>
+          </tr>
+          <tr>
+            <td>13</td>
+            <td><strong>디지털배움터/키오스크 교육</strong></td>
+            <td><span class="tag-type tag--edu">교육·생활지원</span></td>
+            <td>예비/액티브/전환기</td>
+            <td>지자체, 강사</td>
+            <td>전국 단위 디지털 포용 인프라</td>
+            <td class="url-cell"><a target="_blank" rel="noopener">공식 사이트 →</a></td>
+          </tr>
+          <tr>
+            <td>14</td>
+            <td><strong>KT 키오스크 교육용 앱</strong></td>
+            <td><span class="tag-type tag--edu">교육·생활지원</span></td>
+            <td>액티브/전환기</td>
+            <td>교육기관, 강사</td>
+            <td>실제 생활 장면 기반 반복 훈련</td>
+            <td class="url-cell"><a target="_blank" rel="noopener">참고자료 →</a></td>
+          </tr>
+          <tr>
+            <td>15</td>
+            <td><strong>시니어 ICT 케어 전문가 양성</strong></td>
+            <td><span class="tag-type tag--ops">기관운영·교육</span></td>
+            <td>액티브 시니어</td>
+            <td>교육기관, 복지기관</td>
+            <td>시니어가 시니어를 돕는 서포터 모델</td>
+            <td class="url-cell"><a target="_blank" rel="noopener">카카오임팩트 →</a></td>
+          </tr>
+          <tr>
+            <td>16</td>
+            <td><strong>시니어 디지털 안내도우미</strong></td>
+            <td><span class="tag-type tag--living">교육·생활지원</span></td>
+            <td>디지털 취약 시니어</td>
+            <td>액티브 시니어, 지자체</td>
+            <td>또래 강사/안내자 모델</td>
+            <td class="url-cell"><a target="_blank" rel="noopener">디지털배움터 →</a></td>
+          </tr>
+          <tr>
+            <td>17</td>
+            <td><strong>친절한 AI 자동화 입문</strong></td>
+            <td><span class="tag-type tag--edu">교육형</span></td>
+            <td>예비/액티브 시니어</td>
+            <td>개인, 교육기관</td>
+            <td>생성형 AI를 생활 자동화로 연결</td>
+            <td class="url-cell"><a target="_blank" rel="noopener">진코딩 →</a></td>
+          </tr>
+          <tr>
+            <td>18</td>
+            <td><strong>시니어용 AI 첫 경험 앱 "씬이야"</strong></td>
+            <td><span class="tag-type tag--edu">교육·창의</span></td>
+            <td>AI 초심자</td>
+            <td>시니어 본인</td>
+            <td>말벗·이미지 생성 등 부담 낮은 첫 AI 경험</td>
+            <td class="url-cell"><span>추가 확인 필요</span></td>
+          </tr>
+          <tr>
+            <td>19</td>
+            <td><strong>AI 굿윌보이스 / 음성 기반 접근성</strong></td>
+            <td><span class="tag-type tag--living">생활지원</span></td>
+            <td>시각/정보 취약 고령자</td>
+            <td>기관/기업</td>
+            <td>음성 합성·음성 안내의 포용 기술화</td>
+            <td class="url-cell"><a target="_blank" rel="noopener">카카오 AI →</a></td>
+          </tr>
+          <tr>
+            <td>20</td>
+            <td><strong>요양기관 AI 상담/기록 자동화</strong></td>
+            <td><span class="tag-type tag--ops">기관운영</span></td>
+            <td>후기/전환기</td>
+            <td>요양기관 종사자</td>
+            <td>상담기록, 사례관리, 보호자 리포트 자동화 가능성</td>
+            <td class="url-cell"><a target="_blank" rel="noopener">NeuroMotive →</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── GLOBAL ── -->
+<section id="global" class="section">
+  <div class="container--wide">
+    <div class="section-header">
+      <div class="section-label">해외 사례</div>
+      <h2 class="section-title">해외 시니어 AI·AgeTech 서비스 30선</h2>
+      <p class="section-desc">
+        동반자 로봇, 시니어 전용 태블릿, 웨어러블 예측관리, 치매 회상치료, 돌봄자 코칭 등 세부 사용 장면이 국내보다 훨씬 다양하며, 다수가 공식 사이트·앱·대기자 페이지를 보유한다.
+      </p>
+    </div>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>사례 / 서비스</th>
+            <th>국가</th>
+            <th>유형</th>
+            <th>주 수혜자</th>
+            <th>실제 사용자</th>
+            <th>벤치마킹 포인트</th>
+            <th>확인/체험 URL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td><strong>ElliQ</strong></td>
+            <td>미국/이스라엘</td>
+            <td><span class="tag-type tag--companion">AI 동반자</span></td>
+            <td>독거/액티브·전환기</td>
+            <td>시니어, 가족</td>
+            <td>능동적 말걸기, 정서·건강·사회연결 지원</td>
+            <td class="url-cell"><a target="_blank" rel="noopener">공식 사이트 →</a></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><strong>Sentai</strong></td>
+            <td>영국</td>
+            <td><span class="tag-type tag--companion">AI 음성 동반자</span></td>
+            <td>독립생활 시니어</td>
+            <td>시니어, 보호자</td>
+            <td>감시 느낌을 낮춘 음성형 생활 동반자</td>
+            <td class="url-cell"><a target="_blank" rel="noopener">TechRadar 리뷰 →</a></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td><strong>GrandPad</strong></td>
+            <td>미국</td>
+            <td><span class="tag-type tag--living">시니어 전용 기기</span></td>
+            <td>고령 디지털 취약자</td>
+            <td>시니어, 가족</td>
+            <td>폐쇄형/관리형 기기로 복잡도 최소화</td>
+            <td class="url-cell"><a target="_blank" rel="noopener">공식 사이트 →</a></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td><strong>CarePredict</strong></td>
+            <td>미국</td>
+            <td><span class="tag-type tag--ops">기관운영·예측건강</span></td>
+            <td>시설 거주 시니어</td>
+            <td>시니어리빙 운영자</td>
+            <td>웨어러블+AI로 낙상·UTI·우울 조기 징후 탐지</td>
+            <td class="url-cell"><a target="_blank" rel="noopener">공식 사이트 →</a></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td><strong>Lively Medical Alert</strong></td>
+            <td>미국</td>
+            <td><span class="tag-type tag--safety">응급·안전</span></td>
+            <td>액티브/전환기</td>
+            <td>시니어, 가족</td>
+            <td>24/7 응급 대응과 가족 알림 앱</td>
+            <td class="url-cell"><a target="_blank" rel="noopener">공식 사이트 →</a></td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td><strong>Papa</strong></td>
+            <td>미국</td>
+            <td><span class="tag-type tag--living">생활지원·동행</span></td>
+            <td>액티브/전환기</td>
+            <td>시니어, 건강보험/가족</td>
+            <td>사람 동행+보험/플랜 결합, 비의료 생활지원</td>
+            <td class="url-cell"><a target="_blank" rel="noopener">공식 사이트 →</a></td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td><strong>AARP AgeTech Collaborative</strong></td>
+            <td>미국</td>
+            <td><span class="tag-type tag--ecosystem">생태계 플랫폼</span></td>
+            <td>50+ 전체</td>
+            <td>스타트업, 대기업</td>
+            <td>AgeTech 생태계 육성 플랫폼</td>
+            <td class="url-cell"><a target="_blank" rel="noopener">공식 사이트 →</a></td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td><strong>Age UK Digital Together</strong></td>
+            <td>영국</td>
+            <td><span class="tag-type tag--edu">디지털·AI 포용</span></td>
+            <td>디지털 배제 고령자</td>
+            <td>지역단체, 시니어</td>
+            <td>정부 혁신기금 기반 디지털/AI 자신감 향상</td>
+            <td class="url-cell"><a target="_blank" rel="noopener">Age UK →</a></td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td><strong>Sobatomo</strong></td>
+            <td>일본</td>
+            <td><span class="tag-type tag--companion">음성 소셜 로봇</span></td>
+            <td>앱 사용 어려운 고령자</td>
+            <td>고령자, 시설</td>
+            <td>앱/계정 없는 음성 메시징·존재감 기반 설계</td>
+            <td class="url-cell"><a target="_blank" rel="noopener">공식 사이트 →</a></td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td><strong>AIREC</strong></td>
+            <td>일본</td>
+            <td><span class="tag-type tag--robot">케어 로봇</span></td>
+            <td>후기 고령자/와상</td>
+            <td>요양기관</td>
+            <td>체위변경·기저귀 교체 등 물리 돌봄 자동화 연구</td>
+            <td class="url-cell"><a target="_blank" rel="noopener">AIREC →</a></td>
+          </tr>
+          <tr>
+            <td>11</td>
+            <td><strong>Helppad</strong></td>
+            <td>일본</td>
+            <td><span class="tag-type tag--care">케어 센서</span></td>
+            <td>와상/시설 고령자</td>
+            <td>요양보호사</td>
+            <td>냄새 센서로 배변/배뇨 케어 타이밍 최적화</td>
+            <td class="url-cell"><a target="_blank" rel="noopener">공식 사이트 →</a></td>
+          </tr>
+          <tr>
+            <td>12</td>
+            <td><strong>Tellus You Care</strong></td>
+            <td>일본/미국</td>
+            <td><span class="tag-type tag--care">비접촉 모니터링</span></td>
+            <td>독거/재택 시니어</td>
+            <td>보호자, 시설</td>
+            <td>수면 중 호흡/움직임 기반 건강 모니터링</td>
+            <td class="url-cell"><a target="_blank" rel="noopener">공식 사이트 →</a></td>
+          </tr>
+          <tr>
+            <td>13</td>
+            <td><strong>Paro</strong></td>
+            <td>일본</td>
+            <td><span class="tag-type tag--robot">치료/정서 로봇</span></td>
+            <td>치매/후기 고령자</td>
+            <td>시설, 치료사</td>
+            <td>물개형 반려로봇, 정서 안정·상호작용</td>
+            <td class="url-cell"><a target="_blank" rel="noopener">공식 사이트 →</a></td>
+          </tr>
+          <tr>
+            <td>14</td>
+            <td><strong>Zenbo</strong></td>
+            <td>대만</td>
+            <td><span class="tag-type tag--robot">홈 로봇</span></td>
+            <td>독립생활 시니어</td>
+            <td>가족, 시니어</td>
+            <td>복약·일정·낙상·영상통화·스마트홈 제어</td>
+            <td class="url-cell"><a target="_blank" rel="noopener">공식 사이트 →</a></td>
+          </tr>
+          <tr>
+            <td>15</td>
+            <td><strong>PillPal</strong></td>
+            <td>해외</td>
+            <td><span class="tag-type tag--health">복약관리</span></td>
+            <td>만성질환 시니어</td>
+            <td>시니어, 보호자</td>
+            <td>약병 스캔으로 일정 자동 입력</td>
+            <td class="url-cell"><a target="_blank" rel="noopener">공식 사이트 →</a></td>
+          </tr>
+          <tr>
+            <td>16</td>
+            <td><strong>PillQ</strong></td>
+            <td>해외</td>
+            <td><span class="tag-type tag--health">복약관리</span></td>
+            <td>시니어/가족</td>
+            <td>시니어, 보호자</td>
+            <td>복약 패턴 분석과 보호자 알림</td>
+            <td class="url-cell"><a target="_blank" rel="noopener">공식 사이트 →</a></td>
+          </tr>
+          <tr>
+            <td>17</td>
+            <td><strong>PillDrops</strong></td>
+            <td>해외</td>
+            <td><span class="tag-type tag--health">복약관리</span></td>
+            <td>부모 돌봄 가족</td>
+            <td>성인 자녀</td>
+            <td>여러 부모/가족 프로필 관리</td>
+            <td class="url-cell"><a target="_blank" rel="noopener">공식 사이트 →</a></td>
+          </tr>
+          <tr>
+            <td>18</td>
+            <td><strong>DoseMed</strong></td>
+            <td>해외</td>
+            <td><span class="tag-type tag--health">복약+AI 건강</span></td>
+            <td>만성질환자</td>
+            <td>시니어, 보호자</td>
+            <td>부작용·상호작용·재고·리필 체크</td>
+            <td class="url-cell"><a target="_blank" rel="noopener">공식 사이트 →</a></td>
+          </tr>
+          <tr>
+            <td>19</td>
+            <td><strong>PufCare</strong></td>
+            <td>해외</td>
+            <td><span class="tag-type tag--care">올인원 엘더케어</span></td>
+            <td>70대 이상</td>
+            <td>보호자, 시니어</td>
+            <td>음성확인, 일정, 비상버튼, 화상통화</td>
+            <td class="url-cell"><a target="_blank" rel="noopener">공식 사이트 →</a></td>
+          </tr>
+          <tr>
+            <td>20</td>
+            <td><strong>REMME</strong></td>
+            <td>해외</td>
+            <td><span class="tag-type tag--memory">AI 회상치료</span></td>
+            <td>치매/기억저하</td>
+            <td>시설, 가족</td>
+            <td>개인 생애사 기반 비약물 기억 돌봄</td>
+            <td class="url-cell"><a target="_blank" rel="noopener">공식 사이트 →</a></td>
+          </tr>
+          <tr>
+            <td>21</td>
+            <td><strong>ReMemo</strong></td>
+            <td>해외</td>
+            <td><span class="tag-type tag--memory">기억 기반 동반자</span></td>
+            <td>치매 환자</td>
+            <td>가족, 보호자</td>
+            <td>가족 사진/음성/이야기 기반 대화와 인지 추세 추적</td>
+            <td class="url-cell"><a target="_blank" rel="noopener">공식 사이트 →</a></td>
+          </tr>
+          <tr>
+            <td>22</td>
+            <td><strong>NeuroMotive</strong></td>
+            <td>해외</td>
+            <td><span class="tag-type tag--memory">회상치료+문서화</span></td>
+            <td>기억케어 시설</td>
+            <td>시설 종사자</td>
+            <td>치료 참여와 청구/기록 문서화 자동화</td>
+            <td class="url-cell"><a target="_blank" rel="noopener">공식 사이트 →</a></td>
+          </tr>
+          <tr>
+            <td>23</td>
+            <td><strong>Alz Space</strong></td>
+            <td>해외</td>
+            <td><span class="tag-type tag--memory">치매 가족 플랫폼</span></td>
+            <td>치매 고령자</td>
+            <td>가족, 돌봄자</td>
+            <td>환자 앱·돌봄자 앱·가족 포털 3면 구조</td>
+            <td class="url-cell"><a target="_blank" rel="noopener">공식 사이트 →</a></td>
+          </tr>
+          <tr>
+            <td>24</td>
+            <td><strong>Jiya</strong></td>
+            <td>해외</td>
+            <td><span class="tag-type tag--care">치매 행동지원</span></td>
+            <td>치매 환자</td>
+            <td>돌봄자</td>
+            <td>혼란/초조 상황에서 돌봄자에게 실시간 코칭</td>
+            <td class="url-cell"><a target="_blank" rel="noopener">공식 사이트 →</a></td>
+          </tr>
+          <tr>
+            <td>25</td>
+            <td><strong>CareYaya / YayaGuide</strong></td>
+            <td>미국</td>
+            <td><span class="tag-type tag--care">돌봄자 교육/매칭</span></td>
+            <td>치매/고령자</td>
+            <td>돌봄자, 학생</td>
+            <td>AI 기반 돌봄자 훈련과 저비용 인력 매칭 (NIH 지원)</td>
+            <td class="url-cell"><a target="_blank" rel="noopener">Newswise →</a></td>
+          </tr>
+          <tr>
+            <td>26</td>
+            <td><strong>Meals-on-Wheels + AI 확장</strong></td>
+            <td>미국</td>
+            <td><span class="tag-type tag--living">영양·사회화</span></td>
+            <td>60+/75+ 취약층</td>
+            <td>공공기관</td>
+            <td>급식/영양 공공사업에 AI 영양·고립 탐지 결합 가능성</td>
+            <td class="url-cell"><a target="_blank" rel="noopener">공식 사이트 →</a></td>
+          </tr>
+          <tr>
+            <td>27</td>
+            <td><strong>Social Prescribing AI Matching</strong></td>
+            <td>영국 등</td>
+            <td><span class="tag-type tag--social">여가·사회참여</span></td>
+            <td>액티브/전환기</td>
+            <td>GP, 지역기관</td>
+            <td>외로움/건강상태에 맞춰 지역 활동 처방</td>
+            <td class="url-cell"><a target="_blank" rel="noopener">NHS England →</a></td>
+          </tr>
+          <tr>
+            <td>28</td>
+            <td><strong>RemVerse (연구)</strong></td>
+            <td>연구/해외</td>
+            <td><span class="tag-type tag--memory">VR 회상치료</span></td>
+            <td>치매/후기 고령자</td>
+            <td>치료사, 가족</td>
+            <td>AI가 과거 기억 장소/장면을 VR로 재구성</td>
+            <td class="url-cell"><a target="_blank" rel="noopener">arXiv 논문 →</a></td>
+          </tr>
+          <tr>
+            <td>29</td>
+            <td><strong>AI companion phone service</strong></td>
+            <td>미국/영국</td>
+            <td><span class="tag-type tag--companion">정서·위험탐지</span></td>
+            <td>독거 시니어</td>
+            <td>전화 기반 사용자</td>
+            <td>앱 없는 전화형 AI 말벗/정신건강 위험 신호 탐지</td>
+            <td class="url-cell"><a target="_blank" rel="noopener">공식 사이트 →</a></td>
+          </tr>
+          <tr>
+            <td>30</td>
+            <td><strong>Senior-friendly closed tablet ecosystem</strong></td>
+            <td>미국 등</td>
+            <td><span class="tag-type tag--living">생활지원</span></td>
+            <td>후기/디지털 취약</td>
+            <td>가족 관리자</td>
+            <td>일반 스마트폰 대신 가족이 원격관리하는 폐쇄형 단말</td>
+            <td class="url-cell"><a target="_blank" rel="noopener">GrandPad →</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── MATRIX ── -->
+<section id="matrix" class="section">
+  <div class="container--wide">
+    <div class="section-header">
+      <div class="section-label">교차 분석</div>
+      <h2 class="section-title">타깃 × 유형 교차 아이디어 맵</h2>
+      <p class="section-desc">시니어 그룹과 서비스 유형을 교차해 빈 칸을 찾는 것이 사업 기회 탐색의 핵심이다.</p>
+    </div>
+    <div class="table-wrapper">
+      <table class="matrix-table">
+        <thead>
+          <tr>
+            <th>시니어 그룹</th>
+            <th>교육형</th>
+            <th>생활지원형</th>
+            <th>돌봄·안전형</th>
+            <th>건강·인지형</th>
+            <th>기관운영형</th>
+            <th>창의·사회참여형</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="matrix-label">예비<br>55~64</td>
+            <td>AI 리터러시, 은퇴 후 AI 일자리, 부모돌봄 AI 교육</td>
+            <td>부모 행정/병원 예약 대행 AI</td>
+            <td>부모 안부 모니터링 대시보드</td>
+            <td>부모 복약/진료 기록 정리</td>
+            <td>가족 돌봄 코디네이터</td>
+            <td>세대교류 콘텐츠 제작</td>
+          </tr>
+          <tr>
+            <td class="matrix-label">액티브<br>65~74</td>
+            <td>생성형 AI 생활활용, 시니어 AI 튜터 양성</td>
+            <td>키오스크/금융/행정 음성 도우미</td>
+            <td>예방형 안전 웨어러블</td>
+            <td>만성질환·영양·운동 AI 코치</td>
+            <td>복지관 AI 서포터</td>
+            <td>여가·일자리·커뮤니티 매칭</td>
+          </tr>
+          <tr>
+            <td class="matrix-label">전환기<br>75~84</td>
+            <td>1:1 소규모 디지털 생활훈련</td>
+            <td>전화/음성 기반 생활비서</td>
+            <td>AI 안부콜, 스마트플러그, 낙상예측</td>
+            <td>복약·우울·인지저하 조기탐지</td>
+            <td>지자체 위험군 분류</td>
+            <td>음성 기반 소모임/추억 기록</td>
+          </tr>
+          <tr>
+            <td class="matrix-label">후기<br>85+</td>
+            <td>직접교육보다 보호자 교육</td>
+            <td>대리사용형 생활지원</td>
+            <td>로봇/센서/보호자 알림</td>
+            <td>치매 회상치료, 배뇨/수면 모니터링</td>
+            <td>요양기관 기록·인력배치 최적화</td>
+            <td>가족 기억 아카이브, AI 손주</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── IDEAS ── -->
+<section id="ideas" class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">창의 아이디어</div>
+      <h2 class="section-title">벤치마킹 아이디어 씨앗 15선</h2>
+      <p class="section-desc">사례 분석에서 추출한 미개척 또는 한국 맥락 적용 가능한 아이디어들.</p>
+    </div>
+    <div class="idea-grid">
+      <div class="idea-card">
+        <div class="idea-num">01</div>
+        <div class="idea-title">AI 손주 / AI 조카</div>
+        <div class="idea-desc">효돌·ElliQ의 정서 동반자를 한국 가족문화에 맞게 재해석. 손주형 페르소나로 정서 유대 극대화.</div>
+      </div>
+      <div class="idea-card">
+        <div class="idea-num">02</div>
+        <div class="idea-title">앱 없는 AI</div>
+        <div class="idea-desc">전화, TV 리모컨, AI 스피커, 웨어러블처럼 앱·계정 없는 인터페이스. 진입장벽을 원천 제거.</div>
+      </div>
+      <div class="idea-card">
+        <div class="idea-num">03</div>
+        <div class="idea-title">시니어 AI 서포터단</div>
+        <div class="idea-desc">65~74세가 75세 이상을 돕는 공공 일자리 + AI 포용 복합 모델.</div>
+      </div>
+      <div class="idea-card">
+        <div class="idea-num">04</div>
+        <div class="idea-title">가족 돌봄 지휘실</div>
+        <div class="idea-desc">성인 자녀가 부모의 복약·식사·외출·감정 징후를 한 화면에서 확인하는 대시보드.</div>
+      </div>
+      <div class="idea-card">
+        <div class="idea-num">05</div>
+        <div class="idea-title">복지관용 AI 관제판</div>
+        <div class="idea-desc">상담기록, 안부콜, 방문기록을 종합해 위험군을 자동 분류하는 기관 운영 솔루션.</div>
+      </div>
+      <div class="idea-card">
+        <div class="idea-num">06</div>
+        <div class="idea-title">AI 회상 박물관</div>
+        <div class="idea-desc">가족 사진·음성·동네 기억으로 치매 예방/정서 돌봄 콘텐츠를 생성하는 개인화 회상치료.</div>
+      </div>
+      <div class="idea-card">
+        <div class="idea-num">07</div>
+        <div class="idea-title">AI 여가 처방</div>
+        <div class="idea-desc">건강상태·이동거리·성향에 맞춰 지역 프로그램과 동행자를 AI가 매칭.</div>
+      </div>
+      <div class="idea-card">
+        <div class="idea-num">08</div>
+        <div class="idea-title">키오스크 동행 AI</div>
+        <div class="idea-desc">실제 매장/병원/은행 업무를 음성으로 예행연습하고, 현장에서 안내하는 맥락 동반 AI.</div>
+      </div>
+      <div class="idea-card">
+        <div class="idea-num">09</div>
+        <div class="idea-title">식사 결핍 탐지 AI</div>
+        <div class="idea-desc">안부콜 대화에서 식사 결핍·우울·고립 신호를 자동 탐지해 담당자에게 알림.</div>
+      </div>
+      <div class="idea-card">
+        <div class="idea-num">10</div>
+        <div class="idea-title">비접촉 존엄 돌봄</div>
+        <div class="idea-desc">카메라 없는 센서/전력/음성 기반으로 사생활을 지키면서 후기 고령자를 모니터링.</div>
+      </div>
+      <div class="idea-card">
+        <div class="idea-num">11</div>
+        <div class="idea-title">돌봄자 실시간 코치</div>
+        <div class="idea-desc">치매 환자 돌발행동 시 생활지원사에게 즉시 대응 스크립트를 제공하는 현장 코칭 AI.</div>
+      </div>
+      <div class="idea-card">
+        <div class="idea-num">12</div>
+        <div class="idea-title">AI 공공서비스 통역사</div>
+        <div class="idea-desc">복지·건강보험·지자체 신청서류를 시니어가 이해할 수 있는 말로 풀어주는 AI 도우미.</div>
+      </div>
+      <div class="idea-card">
+        <div class="idea-num">13</div>
+        <div class="idea-title">AI 노년 커리어 전환</div>
+        <div class="idea-desc">은퇴자의 경험을 강의·멘토링·콘텐츠로 전환하는 시니어 창작 지원 도구.</div>
+      </div>
+      <div class="idea-card">
+        <div class="idea-num">14</div>
+        <div class="idea-title">AI 세대교류 학교</div>
+        <div class="idea-desc">청년은 AI를, 시니어는 삶의 경험을 교환하는 양방향 세대 학습 프로그램.</div>
+      </div>
+      <div class="idea-card">
+        <div class="idea-num">15</div>
+        <div class="idea-title">AI 돌봄 바우처 마켓</div>
+        <div class="idea-desc">검증된 AI 돌봄 서비스를 지자체가 바우처로 조합 구매하는 정책 생태계 모델.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── KEY FINDINGS ── -->
+<section id="findings" class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">핵심 판단</div>
+      <h2 class="section-title">1차 분석에서 도출한 5가지 인사이트</h2>
+    </div>
+    <div class="findings-list">
+      <div class="finding-item">
+        <div class="finding-icon">🇰🇷</div>
+        <div class="finding-body">
+          <h4>국내는 "돌봄·안전" 편중</h4>
+          <p>AI 안부콜, AI 스피커, 돌봄로봇, 스마트플러그 중심의 사례가 다수를 차지한다. 건강·인지, 교육, 창의 영역의 서비스는 상대적으로 드물다.</p>
+        </div>
+      </div>
+      <div class="finding-item">
+        <div class="finding-icon">🌍</div>
+        <div class="finding-body">
+          <h4>해외는 세부 사용 장면이 다양</h4>
+          <p>동반자 로봇, 시니어 전용 태블릿, 웨어러블 예측관리, 치매 회상치료, 돌봄자 코칭 등 특정 문제 하나에 집중하는 제품이 많다. 제품화 단계도 더 명확하다.</p>
+        </div>
+      </div>
+      <div class="finding-item">
+        <div class="finding-icon">🏛️</div>
+        <div class="finding-body">
+          <h4>국내 대부분은 B2G 사업 특성</h4>
+          <p>개별 서비스 페이지보다 지자체 보도자료·정책자료 형태로만 확인되는 사례가 많다. 이는 일반 사용자 접근보다 기관 계약 중심으로 운영됨을 의미한다.</p>
+        </div>
+      </div>
+      <div class="finding-item">
+        <div class="finding-icon">🏗️</div>
+        <div class="finding-body">
+          <h4>단일 앱보다 플랫폼 구조가 유효</h4>
+          <p>과기부 제안용으로는 단일 앱보다 <strong>AI 시니어 안전망 플랫폼 + 지자체/복지관/가족 사용면 + 서비스 바우처 생태계</strong>로 설계하는 것이 더 강력한 제안이 된다.</p>
+        </div>
+      </div>
+      <div class="finding-item">
+        <div class="finding-icon">🎯</div>
+        <div class="finding-body">
+          <h4>수혜자·사용자·비용부담자 분리 설계가 핵심</h4>
+          <p>시니어 본인의 직접 사용만 고집하지 않고, 누가 수혜를 받고, 누가 실제로 사용하며, 누가 비용을 부담하고, 누가 운영하는지를 분리해 설계하는 것이 가장 큰 차별화 포인트다.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pull-quote">
+      <p>"과기부 제안의 차별화는 'AI 시니어 안전망 플랫폼 + 지자체/복지관/가족 사용면 + 서비스 바우처 생태계'의 3중 구조로 완성된다."</p>
+      <cite>— 보고서 핵심 시사점</cite>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── NEXT STEPS ── -->
+<section id="nextsteps" class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">다음 단계</div>
+      <h2 class="section-title">2라운드 상세 벤치마킹을 위한 6가지 기준</h2>
+      <p class="section-desc">위 사례 중 8~10개를 선정해 다음 기준으로 심층 분석한다.</p>
+    </div>
+    <ul class="checklist">
+      <li>누구의 어떤 문제를 해결하는가 — 문제의 구체성과 고통의 크기 검증</li>
+      <li>수혜자 / 사용자 / 비용부담자 / 운영기관은 누구인가 — 4자 분리 구조 확인</li>
+      <li>AI가 꼭 필요한 지점은 어디인가 — AI 없이 해결 불가한 핵심 기능 특정</li>
+      <li>URL 기준으로 실제 체험/가입/도입 가능성이 있는가 — 제품화 성숙도 평가</li>
+      <li>한국 과기부 사업으로 옮기면 어떤 구조가 되는가 — 규제·조달·예산 경로 탐색</li>
+      <li>6개월 파일럿은 어떻게 설계할 수 있는가 — 최소 검증 단위와 성과지표 설계</li>
+    </ul>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── SOURCES ── -->
+<section id="sources" class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Source Notes</div>
+      <h2 class="section-title">URL 확인 메모 — 신뢰도 분류</h2>
+      <p class="section-desc">공식 사이트 확인 수준에 따라 3단계로 분류했다.</p>
+    </div>
+    <div class="url-note-grid">
+      <div class="url-note-card">
+        <h4><span class="status-dot dot-green"></span>공식/준공식 페이지 확인</h4>
+        <ul>
+          <li>ElliQ — elliq.com</li>
+          <li>CarePredict — carepredict.com</li>
+          <li>Lively — lively.com</li>
+          <li>Papa — consumer.papa.com</li>
+          <li>AARP AgeTech Collaborative</li>
+          <li>Sobatomo — susurobo.jp</li>
+          <li>AIREC — airec-waseda.jp</li>
+          <li>Helppad — helppad.jp</li>
+          <li>Tellus You Care</li>
+          <li>Paro, Zenbo, PillPal, PillQ, PillDrops, DoseMed, PufCare, REMME, ReMemo, NeuroMotive, Alz Space, Jiya</li>
+          <li>효돌 — hyodolshop.com</li>
+          <li>카카오 시니어 디지털 스쿨</li>
+          <li>디지털배움터</li>
+        </ul>
+      </div>
+      <div class="url-note-card">
+        <h4><span class="status-dot dot-orange"></span>보도자료·정책자료 중심 확인</h4>
+        <ul>
+          <li>네이버 클로바 케어콜</li>
+          <li>서울시 AI 안부확인서비스</li>
+          <li>SKT NUGU 돌봄 케어콜</li>
+          <li>KT AI 케어</li>
+          <li>서울시 스마트플러그</li>
+          <li>서대문구 똑똑 문안서비스</li>
+          <li>금천구/동대문구 AI 안부든든</li>
+          <li>→ B2G/지자체 사업으로 일반 사용자 직접 체험 어려움</li>
+        </ul>
+      </div>
+      <div class="url-note-card">
+        <h4><span class="status-dot dot-gray"></span>추가 확인 필요</h4>
+        <ul>
+          <li><strong>씬이야 (시니어용 AI 첫 경험 앱)</strong> — 현재 검색 기준 명확한 공식 페이지 미확인. 실제 서비스명·운영사·앱스토어 링크를 별도 확인해야 한다.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div>
+      <p>
+        <strong>출처 요약:</strong> 국내외 시니어 AI·AgeTech 서비스 공식 사이트, 보도자료, 정책자료, 연구자료 조사 (확인일: 2026-05-17). 관련 노트: <em>시니어-정의와-일상문제-디지털현황</em>, <em>시니어-연령구분별-규모와-지원사업-타깃판단</em>, <em>과기부제안용-시니어AI-후보10</em>.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <strong>시니어 AI 벤치마킹 사례맵</strong><br>
+        국내 20선 · 해외 30선 · 1차 넓은 탐색 보고서<br>
+        작성: 채피 · 프로젝트: 시니어 사업개발
+      </div>
+      <div>
+        확인일: 2026-05-17<br>
+        유형: benchmark-note<br>
+        태그: 벤치마킹 · 시니어AI · AgeTech · 돌봄AI · 정책사업
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
