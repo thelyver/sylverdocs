@@ -105,15 +105,21 @@
   let allItems = [];
   let activeTag = 'all';
 
-  // MarkTL bug: Korean text in index.json is double-encoded (UTF-8 bytes → Latin-1 → UTF-8).
-  // Fix: if all chars are ≤ U+00FF, treat code points as raw bytes and re-decode as UTF-8.
-  function fixEncoding(str) {
+  // MarkTL triple-encodes Korean: each UTF-8 byte becomes a Latin-1 char, repeated up to 3×.
+  // Multi-pass decode: keep re-interpreting code points as raw bytes until Unicode > U+00FF appears.
+  function fixEncoding(str, max = 4) {
     if (!str) return str;
-    try {
-      if ([...str].some(c => c.charCodeAt(0) > 0xFF)) return str; // already proper Unicode
-      const bytes = new Uint8Array([...str].map(c => c.charCodeAt(0)));
-      return new TextDecoder('utf-8').decode(bytes);
-    } catch(e) { return str; }
+    let r = str;
+    for (let i = 0; i < max; i++) {
+      if ([...r].some(c => c.charCodeAt(0) > 0xFF)) break;
+      try {
+        const b = new Uint8Array([...r].map(c => c.charCodeAt(0)));
+        const d = new TextDecoder('utf-8').decode(b);
+        if (d === r) break;
+        r = d;
+      } catch { break; }
+    }
+    return r;
   }
 
   function fixItem(item) {
